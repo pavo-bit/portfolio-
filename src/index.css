@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #FFFDFB;
+  --bg-secondary: #FAF5EF;
+  --color-pink: #F27D9B;
+  --color-blush: #FCE7ED;
+  --color-blue: #DCEEFF;
+  --text-primary: #171717;
+  --text-secondary: #66616A;
+  --bg-dark: #111111;
+  --text-dark: #FFFFFF;
+  --border-subtle: #E9E3E2;
+
+  /* Fluid Spacing & Typography Design Tokens */
+  --container-padding: clamp(1rem, 3.5vw, 2.5rem);
+  --section-padding-y: clamp(3.5rem, 7vw, 6.5rem);
+  --heading-hero: clamp(2.2rem, 5.5vw + 0.5rem, 4.75rem);
+  --heading-section: clamp(1.75rem, 3.8vw + 0.25rem, 2.85rem);
+  --body-fluid: clamp(0.925rem, 1vw + 0.15rem, 1.125rem);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  .font-handwriting {
+    font-family: 'Caveat', cursive;
+  }
+
+  /* Accessible focus rings */
+  :focus-visible {
+    outline: 2px solid #F27D9B;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Custom subtle glass & tape aesthetic */
+.washi-tape {
+  position: absolute;
+  height: 24px;
+  background: rgba(252, 231, 237, 0.75);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFDFB;
+}
+::-webkit-scrollbar-thumb {
+  background: #E9E3E2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F27D9B;
+}
+
+/* Hide scrollbar utility for mobile horizontal swipeables */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe area insets for mobile devices */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
